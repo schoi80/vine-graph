@@ -29,3 +29,7 @@ FOR (n:Verse) ON EACH [n.verseText, n.osisRef];
 
 CREATE FULLTEXT INDEX chapter_fulltext IF NOT EXISTS
 FOR (n:Chapter) ON EACH [n.osisRef];
+
+// Translation indexes
+CREATE INDEX translation_id IF NOT EXISTS FOR (t:Translation) ON (t.id);
+CREATE INDEX translation_lang_field IF NOT EXISTS FOR (t:Translation) ON (t.language, t.field);

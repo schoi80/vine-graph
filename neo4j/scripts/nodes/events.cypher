@@ -24,3 +24,17 @@ CALL apoc.periodic.iterate(
        e.sortKey = value.fields.sortKey",
   {batchSize: 1000, iterateList: true, parallel: false}
 );
+
+CALL apoc.periodic.iterate(
+  "WITH 'https://raw.githubusercontent.com/schoi80/vine-graph/master/data/json/eventsKr.json' AS url
+   CALL apoc.load.json(url) YIELD value
+   RETURN value",
+  "MATCH (e:Event {id: value.id})
+   WITH e, value
+   MERGE (t:Translation {id: value.id + '-ko'})
+   SET t.language = 'ko',
+       t.field = 'title',
+       t.text = value.title
+   MERGE (t)-[:TRANSLATION_OF]->(e)",
+  {batchSize: 1000, iterateList: true, parallel: false}
+);

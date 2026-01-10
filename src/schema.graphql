@@ -1,32 +1,46 @@
-type Testament @node {
+interface Translatable {
+  id: ID!
+  translations: [Translation!]! @declareRelationship
+}
+
+type Translation @node {
+  id: ID! @id
+  language: String!
+  field: String!
+  text: String!
+  translationOf: [Translatable!]! @relationship(type: "TRANSLATION_OF", direction: OUT)
+}
+
+type Testament implements Translatable @node {
+  id: ID! @id
   title: String!
-  titleKr: String
   divisions: [Division!]! @relationship(type: "CONTAINS", direction: OUT)
   books: [Book!]! @relationship(type: "CONTAINS", direction: OUT)
+  translations: [Translation!]! @relationship(type: "TRANSLATION_OF", direction: IN)
 }
 
-type Division @node {
+type Division implements Translatable @node {
+  id: ID! @id
   title: String!
-  titleKr: String
   testament: Testament @cypher(statement: "MATCH (this)<-[:CONTAINS]-(t:Testament) RETURN t LIMIT 1", columnName: "t")
   books: [Book!]! @relationship(type: "CONTAINS", direction: OUT)
+  translations: [Translation!]! @relationship(type: "TRANSLATION_OF", direction: IN)
 }
 
-type Book @node {
+type Book implements Translatable @node {
   id: ID! @id
   osisRef: String
   bookOrder: Int
   shortName: String
   slug: String
   title: String
-  bookNameKr: String
-  shortNameKr: String
   testament: Testament @cypher(statement: "MATCH (this)<-[:CONTAINS]-(t:Testament) RETURN t LIMIT 1", columnName: "t")
   division: Division @cypher(statement: "MATCH (this)<-[:CONTAINS]-(d:Division) RETURN d LIMIT 1", columnName: "d")
   chapters: [Chapter!]! @relationship(type: "CONTAINS", direction: OUT)
+  translations: [Translation!]! @relationship(type: "TRANSLATION_OF", direction: IN)
 }
 
-type Chapter @node {
+type Chapter implements Translatable @node {
   id: ID! @id
   osisRef: String
   chapterNum: Int
@@ -35,23 +49,24 @@ type Chapter @node {
   verses: [Verse!]! @relationship(type: "CONTAINS", direction: OUT)
   writers: [Person!]! @relationship(type: "WROTE", direction: IN)
   dailyReadings: [DailyReading!]! @relationship(type: "READ_ON", direction: OUT)
+  translations: [Translation!]! @relationship(type: "TRANSLATION_OF", direction: IN)
 }
 
-type Verse @node {
+type Verse implements Translatable @node {
   id: ID! @id
   osisRef: String
   verseNum: Int
   verseId: String
   verseText: String
   mdText: String
-  mdTextKr: String
   chapter: Chapter! @cypher(statement: "MATCH (this)<-[:CONTAINS]-(c:Chapter) RETURN c LIMIT 1", columnName: "c")
   mentionsPeople: [Person!]! @relationship(type: "MENTIONS", direction: OUT)
   mentionsPlaces: [Place!]! @relationship(type: "MENTIONS", direction: OUT)
   describesEvents: [Event!]! @relationship(type: "DESCRIBES", direction: OUT)
+  translations: [Translation!]! @relationship(type: "TRANSLATION_OF", direction: IN)
 }
 
-type Person @node {
+type Person implements Translatable @node {
   id: ID! @id
   personId: String
   name: String
@@ -72,9 +87,10 @@ type Person @node {
   partners: [Person!]! @relationship(type: "PARTNER_OF", direction: OUT)
   participatedIn: [Event!]! @relationship(type: "PARTICIPATED_IN", direction: OUT)
   memberOf: [PeopleGroup!]! @relationship(type: "MEMBER_OF", direction: OUT)
+  translations: [Translation!]! @relationship(type: "TRANSLATION_OF", direction: IN)
 }
 
-type Place @node {
+type Place implements Translatable @node {
   id: ID! @id
   placeId: String
   name: String
@@ -91,9 +107,10 @@ type Place @node {
   events: [Event!]! @relationship(type: "OCCURRED_IN", direction: IN)
   peopleBorn: [Person!]! @relationship(type: "BORN_IN", direction: IN)
   peopleDied: [Person!]! @relationship(type: "DIED_IN", direction: IN)
+  translations: [Translation!]! @relationship(type: "TRANSLATION_OF", direction: IN)
 }
 
-type Event @node {
+type Event implements Translatable @node {
   id: ID! @id
   eventID: String
   title: String
@@ -105,12 +122,14 @@ type Event @node {
   occurredIn: [Place!]! @relationship(type: "OCCURRED_IN", direction: OUT)
   precedes: [Event!]! @relationship(type: "PRECEEDS", direction: OUT, properties: "PrecedesProperties")
   follows: [Event!]! @relationship(type: "FOLLOWS", direction: OUT, properties: "FollowsProperties")
+  translations: [Translation!]! @relationship(type: "TRANSLATION_OF", direction: IN)
 }
 
-type PeopleGroup @node {
+type PeopleGroup implements Translatable @node {
   id: ID! @id
   name: String
   members: [Person!]! @relationship(type: "MEMBER_OF", direction: IN)
+  translations: [Translation!]! @relationship(type: "TRANSLATION_OF", direction: IN)
 }
 
 type PrecedesProperties @relationshipProperties {

@@ -10,3 +10,17 @@ CALL apoc.periodic.iterate(
        v.mdText = value.fields.mdText",
   {batchSize: 5000, iterateList: true, parallel: false}
 );
+
+CALL apoc.periodic.iterate(
+  "WITH 'https://raw.githubusercontent.com/schoi80/vine-graph/master/data/json/versesKr.json' AS url
+   CALL apoc.load.json(url) YIELD value
+   RETURN value",
+  "MATCH (v:Verse {osisRef: value.osisRef})
+   WITH v, value
+   MERGE (t:Translation {id: v.id + '-ko'})
+   SET t.language = 'ko',
+       t.field = 'mdText',
+       t.text = value.mdText
+   MERGE (t)-[:TRANSLATION_OF]->(v)",
+  {batchSize: 5000, iterateList: true, parallel: false}
+);
