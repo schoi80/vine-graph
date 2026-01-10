@@ -140,7 +140,6 @@ cp src/.env.example src/.env
 - `make up`: Start Neo4j container.
 - `make down`: Stop Neo4j container.
 - `make init-graphdb`: Run initialization scripts (requires local `cypher-shell`).
-- `make run-scripts-docker`: Run initialization scripts inside the Docker container.
 - `make dev`: Start the GraphQL server with hot-reload.
 - `make install`: Install Node.js dependencies.
 
