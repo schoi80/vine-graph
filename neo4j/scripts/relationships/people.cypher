@@ -1,5 +1,5 @@
 CALL apoc.periodic.iterate(
-  "WITH 'https://raw.githubusercontent.com/schoi80/bible-graph/master/neo4j/import/json/people.json' AS url
+  "WITH 'https://raw.githubusercontent.com/schoi80/vine-graph/master/data/json/people.json' AS url
    CALL apoc.load.json(url) YIELD value
    RETURN value",
   "MATCH (p:Person {id: value.id})

@@ -1,4 +1,4 @@
-WITH "https://raw.githubusercontent.com/schoi80/bible-graph/master/neo4j/import/json/books.json" AS url
+WITH "https://raw.githubusercontent.com/schoi80/vine-graph/master/data/json/books.json" AS url
 CALL apoc.load.json(url) YIELD value
 MERGE (t:Testament {title: value.fields.testament})
 MERGE (d:Division {title: value.fields.bookDiv})

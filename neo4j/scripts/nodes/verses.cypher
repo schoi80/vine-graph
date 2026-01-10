@@ -1,5 +1,5 @@
 CALL apoc.periodic.iterate(
-  "WITH 'https://raw.githubusercontent.com/schoi80/bible-graph/master/neo4j/import/json/verses.json' AS url
+  "WITH 'https://raw.githubusercontent.com/schoi80/vine-graph/master/data/json/verses.json' AS url
    CALL apoc.load.json(url) YIELD value
    RETURN value",
   "MERGE (v:Verse {id: value.id})
