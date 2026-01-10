@@ -1,5 +1,9 @@
 #!/usr/bin/make -f
 
+# Load environment variables from .env
+-include .env
+export
+
 NEO4J_SCRIPTS_DIR=neo4j/scripts
 
 # Defaults (override via env or make vars)
@@ -12,9 +16,7 @@ NEO4J_DATABASE ?= neo4j
 CYPHER := cypher-shell -a "${NEO4J_URI}" -u "${NEO4J_USERNAME}" -p "${NEO4J_PASSWORD}" -d "${NEO4J_DATABASE}"
 
 .PHONY: up down restart run-scripts run-scripts-docker check-cypher \
-	install-frontend dev build \
-	docker-build docker-up \
-	lint lint-fix format format-check typecheck quality pre-commit
+	install dev build start
 
 up:
 	docker compose up -d
