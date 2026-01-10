@@ -1,0 +1,333 @@
+[
+    {
+        "bookName": "Genesis",
+        "bookNameKr": "창세기",
+        "shortNameKr": "창"
+    },
+    {
+        "bookName": "Exodus",
+        "bookNameKr": "출애굽기",
+        "shortNameKr": "출"
+    },
+    {
+        "bookName": "Leviticus",
+        "bookNameKr": "레위기",
+        "shortNameKr": "레"
+    },
+    {
+        "bookName": "Numbers",
+        "bookNameKr": "민수기",
+        "shortNameKr": "민"
+    },
+    {
+        "bookName": "Deuteronomy",
+        "bookNameKr": "신명기",
+        "shortNameKr": "신"
+    },
+    {
+        "bookName": "Joshua",
+        "bookNameKr": "여호수아",
+        "shortNameKr": "수"
+    },
+    {
+        "bookName": "Judges",
+        "bookNameKr": "사사기",
+        "shortNameKr": "삿"
+    },
+    {
+        "bookName": "Ruth",
+        "bookNameKr": "룻기",
+        "shortNameKr": "룻"
+    },
+    {
+        "bookName": "1 Samuel",
+        "bookNameKr": "사무엘상",
+        "shortNameKr": "삼상"
+    },
+    {
+        "bookName": "2 Samuel",
+        "bookNameKr": "사무엘하",
+        "shortNameKr": "삼하"
+    },
+    {
+        "bookName": "1 Kings",
+        "bookNameKr": "열왕기상",
+        "shortNameKr": "왕상"
+    },
+    {
+        "bookName": "2 Kings",
+        "bookNameKr": "열왕기하",
+        "shortNameKr": "왕하"
+    },
+    {
+        "bookName": "1 Chronicles",
+        "bookNameKr": "역대상",
+        "shortNameKr": "대상"
+    },
+    {
+        "bookName": "2 Chronicles",
+        "bookNameKr": "역대하",
+        "shortNameKr": "대하"
+    },
+    {
+        "bookName": "Ezra",
+        "bookNameKr": "에스라",
+        "shortNameKr": "스"
+    },
+    {
+        "bookName": "Nehemiah",
+        "bookNameKr": "느헤미야",
+        "shortNameKr": "느"
+    },
+    {
+        "bookName": "Esther",
+        "bookNameKr": "에스더",
+        "shortNameKr": "에"
+    },
+    {
+        "bookName": "Job",
+        "bookNameKr": "욥기",
+        "shortNameKr": "욥"
+    },
+    {
+        "bookName": "Psalms",
+        "bookNameKr": "시편",
+        "shortNameKr": "시"
+    },
+    {
+        "bookName": "Proverbs",
+        "bookNameKr": "잠언",
+        "shortNameKr": "잠"
+    },
+    {
+        "bookName": "Ecclesiastes",
+        "bookNameKr": "전도서",
+        "shortNameKr": "전"
+    },
+    {
+        "bookName": "Song of Solomon",
+        "bookNameKr": "아가",
+        "shortNameKr": "아"
+    },
+    {
+        "bookName": "Isaiah",
+        "bookNameKr": "이사야",
+        "shortNameKr": "사"
+    },
+    {
+        "bookName": "Jeremiah",
+        "bookNameKr": "예레미야",
+        "shortNameKr": "렘"
+    },
+    {
+        "bookName": "Lamentations",
+        "bookNameKr": "예레미야애가",
+        "shortNameKr": "애"
+    },
+    {
+        "bookName": "Ezekiel",
+        "bookNameKr": "에스겔",
+        "shortNameKr": "겔"
+    },
+    {
+        "bookName": "Daniel",
+        "bookNameKr": "다니엘",
+        "shortNameKr": "단"
+    },
+    {
+        "bookName": "Hosea",
+        "bookNameKr": "호세아",
+        "shortNameKr": "호"
+    },
+    {
+        "bookName": "Joel",
+        "bookNameKr": "요엘",
+        "shortNameKr": "욜"
+    },
+    {
+        "bookName": "Amos",
+        "bookNameKr": "아모스",
+        "shortNameKr": "암"
+    },
+    {
+        "bookName": "Obadiah",
+        "bookNameKr": "오바댜",
+        "shortNameKr": "옵"
+    },
+    {
+        "bookName": "Jonah",
+        "bookNameKr": "요나",
+        "shortNameKr": "욘"
+    },
+    {
+        "bookName": "Micah",
+        "bookNameKr": "미가",
+        "shortNameKr": "미"
+    },
+    {
+        "bookName": "Nahum",
+        "bookNameKr": "나훔",
+        "shortNameKr": "나"
+    },
+    {
+        "bookName": "Habakkuk",
+        "bookNameKr": "하박국",
+        "shortNameKr": "합"
+    },
+    {
+        "bookName": "Zephaniah",
+        "bookNameKr": "스바냐",
+        "shortNameKr": "습"
+    },
+    {
+        "bookName": "Haggai",
+        "bookNameKr": "학개",
+        "shortNameKr": "학"
+    },
+    {
+        "bookName": "Zechariah",
+        "bookNameKr": "스가랴",
+        "shortNameKr": "슥"
+    },
+    {
+        "bookName": "Malachi",
+        "bookNameKr": "말라기",
+        "shortNameKr": "말"
+    },
+    {
+        "bookName": "Matthew",
+        "bookNameKr": "마태복음",
+        "shortNameKr": "마"
+    },
+    {
+        "bookName": "Mark",
+        "bookNameKr": "마가복음",
+        "shortNameKr": "막"
+    },
+    {
+        "bookName": "Luke",
+        "bookNameKr": "누가복음",
+        "shortNameKr": "눅"
+    },
+    {
+        "bookName": "John",
+        "bookNameKr": "요한복음",
+        "shortNameKr": "요"
+    },
+    {
+        "bookName": "Acts",
+        "bookNameKr": "사도행전",
+        "shortNameKr": "행"
+    },
+    {
+        "bookName": "Romans",
+        "bookNameKr": "로마서",
+        "shortNameKr": "롬"
+    },
+    {
+        "bookName": "1 Corinthians",
+        "bookNameKr": "고린도전서",
+        "shortNameKr": "고전"
+    },
+    {
+        "bookName": "2 Corinthians",
+        "bookNameKr": "고린도후서",
+        "shortNameKr": "고후"
+    },
+    {
+        "bookName": "Galatians",
+        "bookNameKr": "갈라디아서",
+        "shortNameKr": "갈"
+    },
+    {
+        "bookName": "Ephesians",
+        "bookNameKr": "에베소서",
+        "shortNameKr": "엡"
+    },
+    {
+        "bookName": "Philippians",
+        "bookNameKr": "빌립보서",
+        "shortNameKr": "빌"
+    },
+    {
+        "bookName": "Colossians",
+        "bookNameKr": "골로새서",
+        "shortNameKr": "골"
+    },
+    {
+        "bookName": "1 Thessalonians",
+        "bookNameKr": "데살로니가전서",
+        "shortNameKr": "살전"
+    },
+    {
+        "bookName": "2 Thessalonians",
+        "bookNameKr": "데살로니가후서",
+        "shortNameKr": "살후"
+    },
+    {
+        "bookName": "1 Timothy",
+        "bookNameKr": "디모데전서",
+        "shortNameKr": "딤전"
+    },
+    {
+        "bookName": "2 Timothy",
+        "bookNameKr": "디모데후서",
+        "shortNameKr": "딤후"
+    },
+    {
+        "bookName": "Titus",
+        "bookNameKr": "디도서",
+        "shortNameKr": "딛"
+    },
+    {
+        "bookName": "Philemon",
+        "bookNameKr": "빌레몬서",
+        "shortNameKr": "몬"
+    },
+    {
+        "bookName": "Hebrews",
+        "bookNameKr": "히브리서",
+        "shortNameKr": "히"
+    },
+    {
+        "bookName": "James",
+        "bookNameKr": "야고보서",
+        "shortNameKr": "약"
+    },
+    {
+        "bookName": "1 Peter",
+        "bookNameKr": "베드로전서",
+        "shortNameKr": "벧전"
+    },
+    {
+        "bookName": "2 Peter",
+        "bookNameKr": "베드로후서",
+        "shortNameKr": "벧후"
+    },
+    {
+        "bookName": "1 John",
+        "bookNameKr": "요한일서",
+        "shortNameKr": "요일"
+    },
+    {
+        "bookName": "2 John",
+        "bookNameKr": "요한이서",
+        "shortNameKr": "요이"
+    },
+    {
+        "bookName": "3 John",
+        "bookNameKr": "요한삼서",
+        "shortNameKr": "요삼"
+    },
+    {
+        "bookName": "Jude",
+        "bookNameKr": "유다서",
+        "shortNameKr": "유"
+    },
+    {
+        "bookName": "Revelation",
+        "bookNameKr": "요한계시록",
+        "shortNameKr": "계"
+    }
+]
+

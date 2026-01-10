@@ -1,0 +1,130 @@
+type Testament @node {
+  title: String!
+  titleKr: String
+  divisions: [Division!]! @relationship(type: "CONTAINS", direction: OUT)
+  books: [Book!]! @relationship(type: "CONTAINS", direction: OUT)
+}
+
+type Division @node {
+  title: String!
+  titleKr: String
+  testament: Testament @cypher(statement: "MATCH (this)<-[:CONTAINS]-(t:Testament) RETURN t LIMIT 1", columnName: "t")
+  books: [Book!]! @relationship(type: "CONTAINS", direction: OUT)
+}
+
+type Book @node {
+  id: ID! @id
+  osisRef: String
+  bookOrder: Int
+  shortName: String
+  slug: String
+  title: String
+  bookNameKr: String
+  shortNameKr: String
+  testament: Testament @cypher(statement: "MATCH (this)<-[:CONTAINS]-(t:Testament) RETURN t LIMIT 1", columnName: "t")
+  division: Division @cypher(statement: "MATCH (this)<-[:CONTAINS]-(d:Division) RETURN d LIMIT 1", columnName: "d")
+  chapters: [Chapter!]! @relationship(type: "CONTAINS", direction: OUT)
+}
+
+type Chapter @node {
+  id: ID! @id
+  osisRef: String
+  chapterNum: Int
+  slug: String
+  book: Book! @cypher(statement: "MATCH (this)<-[:CONTAINS]-(b:Book) RETURN b LIMIT 1", columnName: "b")
+  verses: [Verse!]! @relationship(type: "CONTAINS", direction: OUT)
+  writers: [Person!]! @relationship(type: "WROTE", direction: IN)
+  dailyReadings: [DailyReading!]! @relationship(type: "READ_ON", direction: OUT)
+}
+
+type Verse @node {
+  id: ID! @id
+  osisRef: String
+  verseNum: Int
+  verseId: String
+  verseText: String
+  mdText: String
+  mdTextKr: String
+  chapter: Chapter! @cypher(statement: "MATCH (this)<-[:CONTAINS]-(c:Chapter) RETURN c LIMIT 1", columnName: "c")
+  mentionsPeople: [Person!]! @relationship(type: "MENTIONS", direction: OUT)
+  mentionsPlaces: [Place!]! @relationship(type: "MENTIONS", direction: OUT)
+  describesEvents: [Event!]! @relationship(type: "DESCRIBES", direction: OUT)
+}
+
+type Person @node {
+  id: ID! @id
+  personId: String
+  name: String
+  alsoCalled: String
+  title: String
+  slug: String
+  gender: String
+  description: String
+  status: String
+  birthYear: Int
+  deathYear: Int
+  verses: [Verse!]! @relationship(type: "MENTIONS", direction: IN)
+  chaptersWritten: [Chapter!]! @relationship(type: "WROTE", direction: OUT)
+  bornIn: [Place!]! @relationship(type: "BORN_IN", direction: OUT)
+  diedIn: [Place!]! @relationship(type: "DIED_IN", direction: OUT)
+  parents: [Person!]! @relationship(type: "PARENT_OF", direction: IN)
+  children: [Person!]! @relationship(type: "PARENT_OF", direction: OUT)
+  partners: [Person!]! @relationship(type: "PARTNER_OF", direction: OUT)
+  participatedIn: [Event!]! @relationship(type: "PARTICIPATED_IN", direction: OUT)
+  memberOf: [PeopleGroup!]! @relationship(type: "MEMBER_OF", direction: OUT)
+}
+
+type Place @node {
+  id: ID! @id
+  placeId: String
+  name: String
+  latitude: Float
+  longitude: Float
+  precision: String
+  featureType: String
+  description: String
+  source: String
+  slug: String
+  status: String
+  comment: String
+  verses: [Verse!]! @relationship(type: "MENTIONS", direction: IN)
+  events: [Event!]! @relationship(type: "OCCURRED_IN", direction: IN)
+  peopleBorn: [Person!]! @relationship(type: "BORN_IN", direction: IN)
+  peopleDied: [Person!]! @relationship(type: "DIED_IN", direction: IN)
+}
+
+type Event @node {
+  id: ID! @id
+  eventID: String
+  title: String
+  startDate: Date
+  duration: String
+  sortKey: String
+  verses: [Verse!]! @relationship(type: "DESCRIBES", direction: IN)
+  participants: [Person!]! @relationship(type: "PARTICIPATED_IN", direction: IN)
+  occurredIn: [Place!]! @relationship(type: "OCCURRED_IN", direction: OUT)
+  precedes: [Event!]! @relationship(type: "PRECEEDS", direction: OUT, properties: "PrecedesProperties")
+  follows: [Event!]! @relationship(type: "FOLLOWS", direction: OUT, properties: "FollowsProperties")
+}
+
+type PeopleGroup @node {
+  id: ID! @id
+  name: String
+  members: [Person!]! @relationship(type: "MEMBER_OF", direction: IN)
+}
+
+type PrecedesProperties @relationshipProperties {
+  lagType: String
+  lag: String
+}
+
+type FollowsProperties @relationshipProperties {
+  lagType: String
+  lag: String
+}
+
+type DailyReading @node {
+  id: ID! @id
+  date: Date!
+  chapters: [Chapter!]! @relationship(type: "READ_ON", direction: IN)
+}
