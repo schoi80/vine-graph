@@ -26,7 +26,7 @@ CALL apoc.periodic.iterate(
 );
 
 CALL apoc.periodic.iterate(
-  "WITH 'https://raw.githubusercontent.com/schoi80/vine-graph/master/data/json/eventsKr.json' AS url
+  "WITH 'https://raw.githubusercontent.com/schoi80/vine-graph/master/data/json/ko/events.json' AS url
    CALL apoc.load.json(url) YIELD value
    RETURN value",
   "MATCH (e:Event {id: value.id})
