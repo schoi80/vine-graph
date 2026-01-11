@@ -1,6 +1,6 @@
 # Vine Graph GraphQL Service
 
-A GraphQL API for the Vine Graph project, built with Node.js, Apollo Server, and Neo4j. This service provides a graph-based interface to explore biblical data.
+A GraphQL API for the [Vine](https://github.com/schoi80/vine) project, built with Node.js, Apollo Server, and Neo4j. This service provides a graph-based interface to explore biblical data.
 
 ## Features
 
