@@ -57,8 +57,7 @@ type Verse implements Translatable @node {
   osisRef: String
   verseNum: Int
   verseId: String
-  verseText: String
-  mdText: String
+  text: String
   chapter: Chapter! @cypher(statement: "MATCH (this)<-[:CONTAINS]-(c:Chapter) RETURN c LIMIT 1", columnName: "c")
   mentionsPeople: [Person!]! @relationship(type: "MENTIONS", direction: OUT)
   mentionsPlaces: [Place!]! @relationship(type: "MENTIONS", direction: OUT)

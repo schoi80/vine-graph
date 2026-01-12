@@ -6,8 +6,7 @@ CALL apoc.periodic.iterate(
    SET v.osisRef = value.fields.osisRef,
        v.verseNum = toInteger(value.fields.verseNum),
        v.verseId = value.fields.verseID,
-       v.verseText = value.fields.verseText,
-       v.mdText = value.fields.mdText",
+       v.text = value.fields.text",
   {batchSize: 5000, iterateList: true, parallel: false}
 );
 
@@ -19,8 +18,8 @@ CALL apoc.periodic.iterate(
    WITH v, value
    MERGE (t:Translation {id: v.id + '-ko'})
    SET t.language = 'ko',
-       t.field = 'mdText',
-       t.text = value.mdText
+       t.field = 'text',
+       t.text = value.text
    MERGE (t)-[:TRANSLATION_OF]->(v)",
   {batchSize: 5000, iterateList: true, parallel: false}
 );
